@@ -1,48 +1,48 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
-
 
 public class Main {
 
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     StringTokenizer st = new StringTokenizer(br.readLine());
     int n = Integer.parseInt(st.nextToken());
     int m = Integer.parseInt(st.nextToken());
-    ArrayList<Integer> datas = inputData(n, br);
-    int result = calculate(datas, m);
-    System.out.println(result);
+    int[] data = inputData(n, br);
+    int result = calculate(data, m);
+    bw.write(String.valueOf(result));
     br.close();
+    bw.close();
   }
 
-  private static int calculate(ArrayList<Integer> datas, int m) {
+  private static int calculate(int[] data, int m) {
     int min = Integer.MAX_VALUE;
-    int temp = 0;
-    for (int i = 0; i < datas.size()-2; i++) {
-      int a = datas.get(i);
-      for (int j = i+1; j < datas.size()-1; j++) {
-        int b = datas.get(j);
-        for (int k = j+1; k <datas.size(); k++) {
-          int c = datas.get(k);
-          if (min > m - (a + b + c) && m - (a + b + c)>=0) {
-            min = m - (a + b + c);
-            temp = a + b + c;
+    int result = 0;
+    for (int i = 0; i < data.length; i++) {
+      for (int j = 1 + i; j < data.length; j++) {
+        for (int k = 2 + j - 1; k < data.length; k++) {
+          int temp = m - (data[i] + data[j] + data[k]);
+          if(min > temp && temp >= 0) {
+            min = temp;
+            result = data[i] + data[j] + data[k];
           }
         }
       }
     }
-    return temp;
+    return result;
   }
 
-  private static ArrayList<Integer> inputData(int n, BufferedReader br) throws IOException {
-    ArrayList<Integer> temp = new ArrayList<>();
-    String value = br.readLine();
-    StringTokenizer st = new StringTokenizer(value);
-    for (int i = 0; i < n ; i++) {
-      temp.add(Integer.parseInt(st.nextToken()));
+  private static int[] inputData(int n, BufferedReader br) throws IOException {
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int[] temp = new int[n];
+    for (int i = 0; i < n; i++) {
+      temp[i] = Integer.parseInt(st.nextToken());
     }
     return temp;
   }
