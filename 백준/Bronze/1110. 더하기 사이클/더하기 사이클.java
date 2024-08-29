@@ -1,55 +1,39 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Main {
 
-	public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
+  private static int count = 0;
 
-    int input = sc.nextInt();
-    
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    int sum=0;
-    int result=1;
-    int nresult=0;
-    int a3;
-    int a4;
-    String str1 = String.format("%02d", input);
-    int a1 = (int)str1.charAt(0)-48;
-    int a2 = (int)str1.charAt(1)-48;
-    sum= a1+a2;
-    
-    String str2 =String.format("%02d", sum);
-    a3 = (int)str2.charAt(0)-48;
-    a4 = (int)str2.charAt(1)-48;
+    int num = Integer.parseInt(br.readLine());
+    solveCycle(num, 0);
 
-    String s = String.valueOf(a2);
-    String s2 = String.valueOf(a4);
-    String sresult = s+s2;
-    nresult = Integer.parseInt(sresult);
-    
-    while(input!=nresult) {
-        str1 = String.format("%02d", nresult);
-        a1 = (int)str1.charAt(0)-48;
-        a2 = (int)str1.charAt(1)-48;
-        sum= a1+a2;
-        
-     str2 =String.format("%02d", sum);
-    a3 = (int)str2.charAt(0)-48;
-    a4 = (int)str2.charAt(1)-48;
-    
-    s = String.valueOf(a2);
-    s2 = String.valueOf(a4);
-   sresult = s+s2;
-    nresult = Integer.parseInt(sresult);
-    
-    
-    
-    
-    
-    result++;
+    bw.write(String.valueOf(count));
+
+    br.close();
+    bw.close();
+  }
+
+  private static void solveCycle(int num, int temp) {
+    count++;
+    if (count == 1) {
+      temp = num;
     }
-    System.out.println(result);
-        sc.close();
-	}
-
+    int ten = temp / 10;
+    int one = temp % 10;
+    int sum = ten + one;
+    int sumOne = sum >= 10 ? sum % 10 : sum;
+    int newNum = one * 10 + sumOne % 10;
+    if (num == newNum) {
+      return;
+    }
+    solveCycle(num, newNum);
+  }
 }
