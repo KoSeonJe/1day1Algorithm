@@ -22,35 +22,34 @@ public class Main {
     }
     bw.write(sb.toString());
     br.close();
-    bw.flush();
     bw.close();
   }
 
   private static void play(char[] commands, char[][] xylograph) {
     int iIndex = 0;
     int jIndex = 0;
-    for (char command : commands) {
-      if (!checkPossible(iIndex, jIndex, command, xylograph.length)) {
+    for (int i = 0; i < commands.length; i++) {
+      if (!checkPossible(iIndex, jIndex, commands, i, xylograph.length)) {
         continue;
       }
-      if (command == 'U') {
+      if (commands[i] == 'U') {
         upOrDown(xylograph, iIndex, jIndex, true);
         iIndex--;
-      } else if (command == 'D') {
+      } else if (commands[i] == 'D') {
         upOrDown(xylograph, iIndex, jIndex, false);
         iIndex++;
-      } else if (command == 'L') {
+      } else if (commands[i] == 'L') {
         leftOrRight(xylograph, iIndex, jIndex, true);
         jIndex--;
-      } else if (command == 'R') {
+      } else if (commands[i] == 'R') {
         leftOrRight(xylograph, iIndex, jIndex, false);
         jIndex++;
       }
     }
   }
 
-  private static boolean checkPossible(int iIndex, int jIndex, char command, int length) {
-    switch (command) {
+  private static boolean checkPossible(int iIndex, int jIndex, char[] commands, int i, int length) {
+    switch (commands[i]) {
       case 'U':
         return iIndex > 0;
       case 'D':
@@ -84,6 +83,7 @@ public class Main {
     }
   }
 
+
   private static char[][] inputData(int number) {
     char[][] temp = new char[number][number];
     for (int i = 0; i < number; i++) {
@@ -95,6 +95,7 @@ public class Main {
   }
 
   private static char[] inputCommands(BufferedReader br) throws IOException {
-    return br.readLine().toCharArray();
+    String commands = br.readLine();
+    return commands.toCharArray();
   }
 }
