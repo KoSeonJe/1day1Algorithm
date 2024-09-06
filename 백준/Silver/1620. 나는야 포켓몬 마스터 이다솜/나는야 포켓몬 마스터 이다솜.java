@@ -1,38 +1,44 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-
-    int n = sc.nextInt();
-    int m = sc.nextInt();
-    Main pocketmon = new Main();
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int n = Integer.parseInt(st.nextToken());
+    int m = Integer.parseInt(st.nextToken());
     Map<Integer, String> pocketmonFinder = new HashMap<>();
     Map<String, Integer> indexFinder = new HashMap<>();
-    pocketmon.createPocket(sc, n, pocketmonFinder, indexFinder);
+    createPocket(br, n, pocketmonFinder, indexFinder);
     StringBuilder sb = new StringBuilder();
-    pocketmon.printAnwser(sc, m, pocketmonFinder, indexFinder, sb);
-    System.out.println(sb);
-    sc.close();
+    printAnwser(br, m, pocketmonFinder, indexFinder, sb);
+    bw.write(sb.toString());
+    br.close();
+    bw.close();
   }
 
-  private void printAnwser(Scanner sc, int m, Map<Integer, String> pocketmonFinder,
-      Map<String, Integer> indexFinder, StringBuilder sb) {
-    for (int i = 0; i <m ; i++) {
-      String problem = sc.next();
-      if(isInteger(problem)){
+  private static void printAnwser(BufferedReader br, int m, Map<Integer, String> pocketmonFinder,
+      Map<String, Integer> indexFinder, StringBuilder sb) throws IOException {
+    for (int i = 0; i < m; i++) {
+      String problem = br.readLine();
+      if (isInteger(problem)) {
         int temp = Integer.parseInt(problem);
         sb.append(pocketmonFinder.get(temp)).append("\n");
-      }else{
+      } else {
         sb.append(indexFinder.get(problem)).append("\n");
       }
     }
   }
 
-  private boolean isInteger(String next) {
+  private static boolean isInteger(String next) {
     try {
       Integer.parseInt(next);
       return true;
@@ -41,10 +47,10 @@ public class Main {
     }
   }
 
-  private void createPocket(Scanner sc, int n, Map<Integer, String> pocketmonFinder,
-      Map<String, Integer> indexFinder) {
+  private static void createPocket(BufferedReader br, int n, Map<Integer, String> pocketmonFinder,
+      Map<String, Integer> indexFinder) throws IOException {
     for (int i = 0; i < n; i++) {
-      String input = sc.next();
+      String input = br.readLine();
       pocketmonFinder.put(i + 1, input);
       indexFinder.put(input, i + 1);
     }
