@@ -30,10 +30,9 @@ public class Main {
     }
 
     private static void travel(int start, int minTemp, int nowLocation) {
-
         if (allVisited()) {
             if (map[nowLocation][start] != 0) {
-                min = Math.min(min, minTemp + map[nowLocation][0]);
+                min = Math.min(min, minTemp + map[nowLocation][start]);
             }
             return;
         }
