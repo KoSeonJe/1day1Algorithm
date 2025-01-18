@@ -6,13 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class Main {
-
-    static String[][] keyboard = {
-        {"q", "w", "e", "r", "t", "y", "u", "i", "o", "p"},
-        {"a", "s", "d", "f", "g", "h", "j", "k", "l"},
-        {"z", "x", "c", "v", "b", "n", "m"}
-    };
-
+    
     static String[][] child = {
         {"q", "w", "e", "r", "t"},
         {"a", "s", "d", "f", "g"},
@@ -70,26 +64,26 @@ public class Main {
         String[] chars = target.split("");
         for (int i = 0; i < chars.length; i++) {
             if (isChild(chars[i])) {
-                Point leftPoint = getPoint(leftLocation);
-                Point newPoint = getPoint(chars[i]);
+                Point leftPoint = getPoint(child, leftLocation);
+                Point newPoint = getPoint(child, chars[i]);
 
                 time += leftPoint.getDistance(newPoint);
                 leftLocation = chars[i];
                 continue;
             }
 
-            Point rightPoint = getPoint(rightLocation);
-            Point newPoint = getPoint(chars[i]);
+            Point rightPoint = getPoint(parent, rightLocation);
+            Point newPoint = getPoint(parent, chars[i]);
             time += rightPoint.getDistance(newPoint);
             rightLocation = chars[i];
         }
         return time;
     }
 
-    private static Point getPoint(String letter) {
-        for (int i = 0; i < keyboard.length; i++) {
-            for (int j = 0; j < keyboard[i].length; j++) {
-                if (keyboard[i][j].equals(letter)) {
+    private static Point getPoint(String[][] keyborad, String letter) {
+        for (int i = 0; i < keyborad.length; i++) {
+            for (int j = 0; j < keyborad[i].length; j++) {
+                if (keyborad[i][j].equals(letter)) {
                     return new Point(i, j);
                 }
             }
