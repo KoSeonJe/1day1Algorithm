@@ -1,25 +1,23 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
 
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    int a = Integer.parseInt(st.nextToken());
-    int b = Integer.parseInt(st.nextToken());
-    int v = Integer.parseInt(st.nextToken());
+        String[] inputs = br.readLine().split(" ");
 
-    int result = (v-a)/(a-b) + 1;
-    int temp = (v - a) % (a - b);
-    if(temp!=0){
-      result = result + 1;
+        int a = Integer.parseInt(inputs[0]);
+        int b = Integer.parseInt(inputs[1]);
+        int v = Integer.parseInt(inputs[2]);
+
+        int result = (v - a) / (a - b) + 1;
+        if (((v - a) % (a - b)) != 0) {
+            result = result + 1;
+        }
+        System.out.println(result);
+        br.close();
     }
-    System.out.println(result);
-    br.close();
-  }
 }
