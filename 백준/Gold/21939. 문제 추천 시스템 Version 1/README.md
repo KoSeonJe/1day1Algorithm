@@ -1,4 +1,4 @@
-# [Gold IV] 문제 추천 시스템 Version 1 - 21939 
+# [Gold IV] 문제 추천 시스템 Version 1 - 21939  
 
 [문제 링크](https://www.acmicpc.net/problem/21939) 
 
