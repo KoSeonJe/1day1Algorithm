@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main { 
     
     static int[][] map;
     static boolean[][] visited;
@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedWriter bws = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
@@ -36,9 +36,9 @@ public class Main {
             }
             sb.append(count).append("\n");
         }
-        bw.write(sb.toString());
+        bws.write(sb.toString());
         br.close();
-        bw.close();
+        bws.close();
     }
 
     private static void dfs(int x, int y) {
