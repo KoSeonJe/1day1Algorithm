@@ -10,9 +10,9 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     int numOfVertices = sc.nextInt();
     int numOfEdges = sc.nextInt();
-    Main virus = new Main();
-    virus.createData(numOfVertices, numOfEdges, sc);
-    System.out.println(virus.getVirusCount(numOfVertices+1));
+    Main viruss = new Main();
+    viruss.createData(numOfVertices, numOfEdges, sc);
+    System.out.println(viruss.getVirusCount(numOfVertices+1));
 
     sc.close();
   }
