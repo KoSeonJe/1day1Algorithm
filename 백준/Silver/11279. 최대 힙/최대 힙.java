@@ -5,8 +5,8 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
-    Main maxHeap = new Main();
-    maxHeap.input(sc, n);
+    Main maxHeaps = new Main();
+    maxHeaps.input(sc, n);
     sc.close();
   }
 
