@@ -15,10 +15,10 @@ public class Main {
     int n = Integer.parseInt(st.nextToken());
     int m = Integer.parseInt(st.nextToken());
 
-    Main problem = new Main();
+    Main problems = new Main();
 
-    String[][] chess = problem.inputChess(n, m, bf);
-    problem.rePaint(chess);
+    String[][] chess = problems.inputChess(n, m, bf);
+    problems.rePaint(chess);
     bf.close();
   }
 
