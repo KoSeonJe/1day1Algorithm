@@ -10,8 +10,8 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(bf.readLine());
-    Main nSquareMax = new Main();
-    nSquareMax.printN(bf, n);
+    Main nSquareMaxs = new Main();
+    nSquareMaxs.printN(bf, n);
   }
 
   private void printN(BufferedReader bf, int n) throws IOException {
