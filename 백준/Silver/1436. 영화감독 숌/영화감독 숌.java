@@ -11,8 +11,8 @@ public class Main {
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     int n = Integer.parseInt(br.readLine());
-    int result = getTitle(n);
-    bw.write(String.valueOf(result));
+    int results = getTitle(n);
+    bw.write(String.valueOf(results));
 
     br.close();
     bw.close();
