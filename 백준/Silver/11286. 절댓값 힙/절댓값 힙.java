@@ -9,9 +9,9 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
-    Main ah = new Main();
+    Main ahs = new Main();
     StringBuilder sb = new StringBuilder();
-    ah.input(n, br, sb);
+    ahs.input(n, br, sb);
     System.out.println(sb);
     br.close();
   }
