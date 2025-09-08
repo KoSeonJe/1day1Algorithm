@@ -8,8 +8,8 @@ public class Main {
 		int n = sc.nextInt();
 		int count =0;
 		for(int i=0; i<n; i++) {
-			boolean result =check();
-			if(result) {
+			boolean results =check();
+			if(results) {
 				count++;
 			}
 		}
