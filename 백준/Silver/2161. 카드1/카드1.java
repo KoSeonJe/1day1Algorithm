@@ -14,9 +14,9 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        Deque<Integer> que = fill(n);
+        Deque<Integer> ques = fill(n);
 
-        List<Integer> drawed = draw(que);
+        List<Integer> drawed = draw(ques);
         StringBuilder builder = new StringBuilder();
         for (int drawedPart : drawed) {
             builder.append(drawedPart).append(" ");
